@@ -91,7 +91,7 @@ define(function(require, exports, module) {
 			})
 			opt.of();
 		}
-		opt.r = function() {
+		module.exports.remove = opt.r = function() {
 			$a.addClass("off");
 			setTimeout(function() {
 				$a.remove();
@@ -120,10 +120,10 @@ define(function(require, exports, module) {
 				return false;
 			});
 			$('#alertT').css('cursor', 'move').on('mousedown', function(e) {
-				var st = !-[1, ] && !window.XMLHttpRequest ? $w.scrollTop() : 0,
-					w = $w.width() - $a.width() - 12,
+				var st = -[1, ] || window.XMLHttpRequest ? 0 : $w.scrollTop(),
+					w = $w.width() - $a.width() - 9,
 					t = st + 4,
-					u = st + $w.height() - $a.height() - 12,
+					u = st + $w.height() - $a.height() - 9,
 					x = e.pageX - $a.removeClass("on").fadeTo('fast', 0.6).offset().left,
 					y = e.pageY - $a.offset().top - st;
 				$(document).on({
