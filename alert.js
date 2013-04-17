@@ -22,14 +22,15 @@ define(function(require, exports, module) {
 			rf: function() {}
 		}, opt || {});
 		var $w = $(window),
+			$d = $(document),
 			$select = $("select"),
-			$a, c;
+			$a, $p;
 		if (opt.cName) {
 			opt.cName += " info";
 			opt.width = "auto";
 		}
 		opt.h = function() {
-			$('<div id="hbg" style="height:' + $(document).height() + 'px;"></div>').appendTo('body').fadeTo('fast', 0.6);
+			$('<div id="hbg" style="height:' + $d.height() + 'px;"></div>').appendTo('body').fadeTo('fast', 0.6);
 			$select.css("visibility", "hidden");
 			return opt;
 		}
@@ -49,29 +50,30 @@ define(function(require, exports, module) {
 			str.push('</div>');
 			$("body").append(str.join(''));
 			$a = $('#alertM');
-			c = ($w.height() - $a.height()) / 2;
-			$a.css({
-				top: c,
-				left: ($w.width() - $("#alertP").width()) / 2 + 14
-			}).addClass("on");
-			if (!-[1, ] && !window.XMLHttpRequest) {
+			$p = $("#alertP");
+			$a[0].style.left = ($w.width() - $p.width()) / 2 + 14 + "px";
+			if (-[1, ] || window.XMLHttpRequest) {
+				$a.addClass("on")[0].style.top = ($w.height() - $a.height()) / 2 + "px";
+				$w.on('resize', function() {
+					$a.stop().animate({
+						top: ($w.height() - $a.height()) / 2,
+						left: ($w.width() - $p.width()) / 2 + 14
+					});
+				});
+			} else {
 				$a.css({
 					position: "absolute",
-					top: c + $w.scrollTop()
+					top: ($w.height() - $a.height()) / 2 + $w.scrollTop()
 				});
-				$w.bind('scroll', function() {
-					$a.css({
-						top: ($w.height() - $a.height()) / 2 + $w.scrollTop()
+				$w.on('scroll', function() {
+					$a[0].style.top = ($w.height() - $a.height()) / 2 + $w.scrollTop() + "px";
+				}).on('resize', function() {
+					$a.stop().animate({
+						top: ($w.height() - $a.height()) / 2 + $w.scrollTop(),
+						left: ($w.width() - $p.width()) / 2 + 14
 					});
 				});
 			}
-			$w.on('resize', function() {
-				c = ($w.height() - $a.height()) / 2 + (!-[1, ] && !window.XMLHttpRequest ? $w.scrollTop() : 0);
-				$a.stop().animate({
-					top: c,
-					left: ($w.width() - $("#alertP").width()) / 2 + 14
-				});
-			});
 			try {
 				var touch = function() {
 					if (!opt.cName) $a.css("position", "absolute");
@@ -101,17 +103,19 @@ define(function(require, exports, module) {
 				$select.css("visibility", "visible");
 				opt.rf();
 			});
-			if (amrt);
-			clearTimeout(amrt);
-			amrt = 0;
+			if (amrt) {
+				clearTimeout(amrt);
+				amrt = 0;
+			}
 		}
 		if ($('#alertM').length > 0) {
 			$('#alertM').remove();
 			opt.s();
 		} else opt.h().s();
-		if (amrt);
-		clearTimeout(amrt);
-		amrt = 0;
+		if (amrt) {
+			clearTimeout(amrt);
+			amrt = 0;
+		}
 		if (!isNaN(opt.time)) amrt = setTimeout(function() {
 			opt.r();
 		}, opt.time + 999);
@@ -126,19 +130,19 @@ define(function(require, exports, module) {
 					u = st + $w.height() - $a.height() - 9,
 					x = e.pageX - $a.removeClass("on").fadeTo('fast', 0.6).offset().left,
 					y = e.pageY - $a.offset().top - st;
-				$(document).on({
+				$d.on({
 					mousemove: function(e) {
 						var cx = e.clientX - x;
 						var cy = e.clientY - y;
-						c = $a.css({
+						$a.css({
 							left: cx < 4 ? 4 : (cx > w ? w : cx),
 							top: cy > u ? u : (cy < t ? t : cy)
-						}).offset().top - $w.scrollTop();
+						});
 						e.preventDefault();
 					},
 					mouseup: function() {
 						$a.fadeTo('fast', 1);
-						$(this).off('mousemove').off('mouseup');
+						$d.off('mousemove').off('mouseup');
 					}
 				});
 				return false;
