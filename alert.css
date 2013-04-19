@@ -19,8 +19,8 @@
 #alertM.info{background:rgba(255,255,255,.4)}
 #alertM.info.on{-webkit-animation-name:rollIn;-moz-animation-name:rollIn;-o-animation-name:rollIn;animation-name:rollIn}
 #alertM.info.off{-webkit-animation-name:rollOut;-moz-animation-name:rollOut;-o-animation-name:rollOut;animation-name:rollOut}
-#alertM.on{-webkit-backface-visibility:visible !important;-webkit-animation-name:alm;-moz-backface-visibility:visible !important;-moz-animation-name:alm;-o-backface-visibility:visible !important;-o-animation-name:alm;backface-visibility:visible !important;animation-name:alm}
-#alertM.off{-webkit-backface-visibility:visible !important;-webkit-animation-name:alr;-moz-backface-visibility:visible !important;-moz-animation-name:alr;-o-backface-visibility:visible !important;-o-animation-name:alr;backface-visibility:visible !important;animation-name:alr}
+#alertM.on{-webkit-animation-name:alm;-moz-animation-name:alm;-o-animation-name:alm;animation-name:alm}
+#alertM.off{-webkit-animation-name:alr;-moz-animation-name:alr;-o-animation-name:alr;animation-name:alr}
 #alertP{padding:12px;background-color:#fff}
 #alertBtns{text-align:right}
 #alertBtns a{margin:4px 9px;position:static}
