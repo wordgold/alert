@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 			time: 999,
 			title: '提示',
 			width: 320,
-			height: 'auto',
+			height: 'a',
 			btnC: 1,
 			btnY: 1,
 			btnYT: '确定',
@@ -27,7 +27,7 @@ define(function(require, exports, module) {
 			$a, $p;
 		if (opt.cName) {
 			opt.cName += " info";
-			opt.width = "auto";
+			opt.width = "a";
 		}
 		opt.h = function() {
 			$('<div id="hbg" style="height:' + $d.height() + 'px;"></div>').appendTo('body').fadeTo('fast', 0.6);
@@ -51,13 +51,13 @@ define(function(require, exports, module) {
 			$("body").append(str.join(''));
 			$a = $('#alertM');
 			$p = $("#alertP");
-			$a[0].style.left = ($w.width() - $p.outerWidth()) / 2 - 8 + "px";
+			$a[0].style.left = ($w.width() - $p.outerWidth()) / 2 - 5 + "px";
 			if (-[1, ] || window.XMLHttpRequest) {
 				$a.addClass("on")[0].style.top = ($w.height() - $a.height()) / 2 + "px";
 				$w.on('resize', function() {
 					$a.stop().animate({
 						top: ($w.height() - $a.height()) / 2,
-						left: ($w.width() - $p.outerWidth()) / 2 - 8
+						left: ($w.width() - $p.outerWidth()) / 2 - 5
 					});
 				});
 			} else {
@@ -70,7 +70,7 @@ define(function(require, exports, module) {
 				}).on('resize', function() {
 					$a.stop().animate({
 						top: ($w.height() - $a.height()) / 2 + $w.scrollTop(),
-						left: ($w.width() - $p.outerWidth()) / 2 - 8
+						left: ($w.width() - $p.outerWidth()) / 2 - 5
 					});
 				});
 			}
