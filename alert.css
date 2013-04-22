@@ -24,7 +24,7 @@
 #alertBtns{text-align:right}
 #alertBtns a{margin:4px 9px;position:static}
 .info .panlT,.info #alertBtns{display:none}
-.info #alertP{_display:inline;_zoom:1;height:48px;padding:0 6px 0 58px;white-space:nowrap;line-height:48px;background-image:url(<!--#echo var="static"-->images/common/loading.gif);background-repeat:no-repeat;background-position:6px 50%}
+.info #alertP{_display:inline;_zoom:1;height:48px;padding:9px 16px 9px 72px;white-space:nowrap;line-height:48px;background-image:url(<!--#echo var="static"-->images/common/loading.gif);background-repeat:no-repeat;background-position:16px 50%}
 .succ #alertP{background-image:url(<!--#echo var="static"-->images/mod/succ.png)}
 .alert #alertP{background-image:url(<!--#echo var="static"-->images/mod/alert.png)}
 .cross #alertP{background-image:url(<!--#echo var="static"-->images/mod/cross.png)}
