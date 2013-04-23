@@ -51,13 +51,13 @@ define(function(require, exports, module) {
 			$("body").append(str.join(''));
 			$a = $('#alertM');
 			$p = $("#alertP");
-			$a[0].style.left = ($w.width() - $p.outerWidth()) / 2 - 5 + "px";
+			$a[0].style.left = ($w.width() - $p.outerWidth()) / 2 - 9 + "px";
 			if (-[1, ] || window.XMLHttpRequest) {
 				$a.addClass("on")[0].style.top = ($w.height() - $a.height()) / 2 + "px";
 				$w.on('resize', function() {
 					$a.stop().animate({
 						top: ($w.height() - $a.height()) / 2,
-						left: ($w.width() - $p.outerWidth()) / 2 - 5
+						left: ($w.width() - $p.outerWidth()) / 2 - 9
 					});
 				});
 			} else {
@@ -70,7 +70,7 @@ define(function(require, exports, module) {
 				}).on('resize', function() {
 					$a.stop().animate({
 						top: ($w.height() - $a.height()) / 2 + $w.scrollTop(),
-						left: ($w.width() - $p.outerWidth()) / 2 - 5
+						left: ($w.width() - $p.outerWidth()) / 2 - 9
 					});
 				});
 			}
