@@ -3,16 +3,13 @@
 <head>
 	<meta charset="utf-8"/>
 	<link href="https://rawgithub.com/wordgold/wg-s-code/master/css/reset.css" rel="stylesheet" type="text/css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<link href="emailpop.css" rel="stylesheet" type="text/css" />
-	<script src="emailpop.js"></script>
-	<title>Email 辅助输入插件</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="alert.css" rel="stylesheet" type="text/css" />
+	<script src="alert.js"></script>
+	<title>Alert 提示框</title>
 	<style type="text/css">
 		script{
 			display: block
-		}
-		body{
-			padding: 99px
 		}
 		input{
 			width: 240px;
@@ -21,32 +18,118 @@
 	</style>
 </head>
 <body>
-	<h1>Email 辅助输入插件</h1>
-	<p>一个辅助邮箱输入的js插件，只有3K大小。</p>
-	<p>在页面上输入Email 时动态提示常见后缀。</p>
-	<h3>使用方法</h3>
-	<p>这是一个jquery插件，使用方法为： <b>$("Selectors").emailpop()</b> </p>
-	<p>由于表现和逻辑分离，使用前请自行导入 <b>emailpop.css</b> 文件内容</p>
-	<p>为防止IE6崩溃，请在页面加载完毕后执行</p>
-	<input type="email" id="email" placeholder="请输入您的电子邮箱地址">
+	<h1>Alert 提示框</h1>
+	<p><a href="javascript:" class="lightbtn" id="btn1">各种颜色按钮</a></p>
 	<pre>
 		<script>
-			$(function(){
-				$("#email").emailpop();
+		$("#btn1").on("click",function(){
+			alertM("记录删除之后将无法恢复，请慎重考虑。",{
+				time:"y",
+				title:"您确定要永久删除此记录吗？",
+				btns:[
+					{
+						txt:"Red",
+						clas:"red"
+					},
+					{
+						txt:"Blue",
+						clas:"blue"
+					},
+					{
+						txt:"Green",
+						clas:"green"
+					},
+					{
+						txt:"Normal"
+					},
+					{
+						txt:"Disbled",
+						clas:"disbled",
+						func:function(){
+							return false
+						}
+					}
+				]
 			})
+		})
 		</script>
 	</pre>
-	<p>多个输入框时</p>
-	<p id="email3">
-		<input type="email" placeholder="请输入您的电子邮箱地址">
-		<input type="email" placeholder="请输入您的电子邮箱地址">
-		<input type="email" placeholder="请输入您的电子邮箱地址">
+	<p><a href="javascript:" class="lightbtn" id="btn2">嵌入iframe</a></p>
+	<pre>
+		<script>
+		$("#btn2").on("click",function(){
+			alertM("http://www.baidu.com/",{
+				time:"y",
+				width:900,
+				height:640,
+				iframe:1
+			})
+		})
+		</script>
+	</pre>
+	<p><a href="javascript:" class="lightbtn" id="btn3">禁止关闭</a></p>
+	<pre>
+		<script>
+		$("#btn3").on("click",function(){
+			alertM("请刷新页面重新加载",{
+				time:"y",
+				close:0,
+				title:"禁止关闭",
+				btns:[
+					{
+						txt:"Red",
+						class:"red",
+						func:function(){
+							return false
+						}
+					},
+					{
+						txt:"Normal",
+						func:function(){
+							return false
+						}
+					}
+				]
+			})
+		})
+		</script>
+	</pre>
+	<p><a href="javascript:" class="lightbtn" id="btn4">无按钮</a></p>
+	<pre>
+		<script>
+		$("#btn4").on("click",function(){
+			alertM("2秒后自动关闭",{
+				time:2000,
+				close:0,
+				title:"2秒后自动关闭"
+			})
+		})
+		</script>
+	</pre>
+	<p>
+		<a href="javascript:" class="lightbtn" id="btn5">Alert</a>
+		<a href="javascript:" class="lightbtn" id="btn6">Error</a>
+		<a href="javascript:" class="lightbtn" id="btn7">Success</a>
+		<a href="javascript:" class="lightbtn" id="btn8">Cross</a>
+		<a href="javascript:" class="lightbtn" id="btn9">Loading</a>
 	</p>
 	<pre>
 		<script>
-			$(function(){
-				$("#email3 input").emailpop();
-			})
+		$("#btn5").on("click",function(){
+			alertM("Alert",{clas:"alert"})
+		})
+		$("#btn6").on("click",function(){
+			alertM("Error",{clas:"error"})
+		})
+		$("#btn7").on("click",function(){
+			alertM("Success",{clas:"succ"})
+		})
+		$("#btn8").on("click",function(){
+			alertM("Cross",{clas:"cross"})
+		})
+		$("#btn9").on("click",function(){
+			alertM("Loading",{clas:"load"})
+		})
 		</script>
 	</pre>
 </body>
