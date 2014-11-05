@@ -101,14 +101,12 @@ window.alertM=function(content, opt) {
 	}
 	alertM.remove = opt.r = function() {
 		$a.addClass("off");
-		setTimeout(function() {
-			$a.remove();
-		}, 400);
-		$('#hbg').delay(200).fadeOut(function() {
-			$(this).remove();
+		$('#hbg').fadeOut(function() {
 			if (ie6)
 				$select.css("visibility", "visible");
 			opt.rf.call($a,opt);
+			$(this).remove();
+			$a.remove();
 		});
 		if (amrt) {
 			clearTimeout(amrt);
@@ -127,7 +125,7 @@ window.alertM=function(content, opt) {
 			opt.r();
 		}, opt.time + 999);
 	else {
-		$('#alertR').mousedown(function() {
+		$('#alertR').on('mousedown',function() {
 			return false;
 		});
 		$('#alertT').css('cursor', 'move').on('mousedown', function(e) {
