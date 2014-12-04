@@ -10,11 +10,11 @@ window.alertM=function(content, opt) {
 		btns:[
 			// {
 			// 	txt:"确定",
-			// 	clas:"",
+			// 	cls:"",
 			// 	func:
 			// }
 		],
-		clas: '',
+		cls: '',
 		iframe: 0,
 		of: function() {},
 		cf: function() {},
@@ -25,8 +25,8 @@ window.alertM=function(content, opt) {
 		ie6 = !-[1, ] && !window.XMLHttpRequest,
 		$select = $("select"),
 		$a, $p;
-	if (opt.clas) {
-		opt.clas += " info";
+	if (opt.cls) {
+		opt.cls += " info";
 		opt.width = "a";
 	}
 	opt.h = function() {
@@ -36,7 +36,7 @@ window.alertM=function(content, opt) {
 		return opt;
 	}
 	opt.s = function() {
-		var str = ['<div id="alertM" class="', opt.clas, '" style="width:', opt.width, 'px;"><div id="alertbg"></div><div id="alertb"><h5 id="alertT" class="panlT">'];
+		var str = ['<div id="alertM" class="', opt.cls, '" style="width:', opt.width, 'px;"><div id="alertbg"></div><div id="alertb"><h5 id="alertT" class="panlT">'];
 		if (opt.close) str.push('<a id="alertR" class="fr" title="关闭" href="javascript:">&times;</a>');
 		str.push(opt.title, '</h5><div id="alertP" style="height:', opt.height, 'px;">');
 		if (opt.iframe) str.push('<iframe id="alertF" frameBorder="0" scrolling="no" style="border:0;width:', opt.width - 48, 'px;height:', opt.height, 'px" src="', content, '"></iframe>');
@@ -45,7 +45,7 @@ window.alertM=function(content, opt) {
 		if (opt.btns.length>0) {
 			str.push('<div id="alertBtns">');
 			for (var i = 0,l=opt.btns.length; i <l; i++) {
-				str.push('<a id="alert_btn_',i,'" class="btn ',opt.btns[i].clas,'" href="javascript:">',opt.btns[i].txt, '</a>')
+				str.push('<a id="alert_btn_',i,'" class="btn ',opt.btns[i].cls,'" href="javascript:">',opt.btns[i].txt, '</a>')
 			};
 			str.push('</div>');
 		}
@@ -80,7 +80,7 @@ window.alertM=function(content, opt) {
 				});
 			});
 		}
-		if (!opt.clas) {
+		if (!opt.cls) {
 			$a.on("click", "#alertR", function() {
 				if (!(opt.cf.call($a,opt) == false)) opt.r();
 				return false;
